@@ -18,9 +18,11 @@ class Program
         job2._startYear = 2012;
         job2._endYear = 2018;
 
-        job1.DisplayJobDetails();
-        job2.DisplayJobDetails();
+        Resume resume = new Resume("Brandon Lisonbee");
 
+        resume._jobList.Add(job1);
+        resume._jobList.Add(job2);
 
+        resume.DisplayResumeDetails();
     }
 }
