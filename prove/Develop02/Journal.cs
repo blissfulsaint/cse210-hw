@@ -14,9 +14,10 @@ public class Journal
 
     public void DisplayJournal()
     {
-        foreach (Entry entry in _entries)
+        for (int i = 0; i < _entries.Count(); i++)
         {
-            entry.DisplayEntry();
+            Console.WriteLine($"Index: {i}");
+            _entries[i].DisplayEntry();
             Console.WriteLine();
         }
     }
@@ -31,7 +32,7 @@ public class Journal
         }
     }
 
-    public void LookupByPrompt(string prompt)
+    public void SearchByPrompt(string prompt)
     {
         List<Entry> entries = new List<Entry>();
         List<int> indexes = new List<int>();
@@ -63,8 +64,18 @@ public class Journal
         DisplayFilteredJournal(entries, indexes);
     }
 
-    public void AddEntry()
+    public void InsertNewEntry(Entry entry)
     {
-        
+        _entries.Add(entry);
+    }
+
+    public void RemoveEntry(int index)
+    {
+        _entries.Remove(_entries[index]);
+    }
+
+    public List<Entry> GetEntries()
+    {
+        return _entries;
     }
 }
