@@ -1,22 +1,40 @@
 public class Prompt
 {
 
-    List<string> _prompts = new List<string>();
+    List<string> _promptList = new List<string>();
+    string _promptType;
 
-    public Prompt()
+    public Prompt(string type = "normal")
     {
-
+        _promptType = type;
     }
 
-    public string PickRandomPrompt()
+    public void AddPrompt(string prompt)
     {
-        return "This is the prompt";
+        _promptList.Add(prompt);
     }
 
-    public void AddPrompt()
+    public string GetRandomPrompt()
     {
-        
+        Random rand = new Random();
+        return _promptList[rand.Next(0, _promptList.Count())];
     }
 
+    public void DisplayPrompts()
+    {
+        foreach (string prompt in _promptList)
+        {
+            Console.WriteLine(prompt);
+        }
+    }
 
+    public void SetType(string type)
+    {
+        _promptType = type;
+    }
+
+    public new string GetType()
+    {
+        return _promptType;
+    }
 }
