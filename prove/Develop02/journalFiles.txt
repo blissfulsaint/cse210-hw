@@ -1,0 +1,3 @@
+journal.txt
+journal2.txt
+journal3.txt

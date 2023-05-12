@@ -3,14 +3,20 @@ public class Entry
     private DateTime _date;
     private string _dateString;
     private string _response;
-    private string _prompt;
-    private string _promptType;
+    private string _prompt = "";
+    private string _promptType = "";
 
-    public void LogEntry(string entry)
+    public void LogEntry(string entry, DateTime date, string prompt = "", string promptType = "")
     {
         _response = entry;
-        _date = DateTime.Now;
+        _date = date;
         _dateString = _date.ToShortDateString();
+
+        if (prompt != "")
+        {
+            _prompt = prompt;
+            _promptType = promptType;
+        }
     }
 
     public string GetEntry()
@@ -37,6 +43,11 @@ public class Entry
     public string GetPrompt()
     {
         return _prompt;
+    }
+
+    public string GetPromptType()
+    {
+        return _promptType;
     }
 
     public void DisplayResponse()

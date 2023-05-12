@@ -1,9 +1,4 @@
-using System;
+File file = new File();
+Menu menu = new Menu(file);
 
-class Program
-{
-    static void Main(string[] args)
-    {
-        Console.WriteLine("Hello Develop02 World!");
-    }
-}
+menu.DisplayFileMenu();

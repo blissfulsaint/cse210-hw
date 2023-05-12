@@ -3,10 +3,21 @@ public class Prompt
 
     List<string> _promptList = new List<string>();
     string _promptType;
+    string _promptFileIndicator = "Prompt Type: ";
 
-    public Prompt(string type = "normal")
+    public Prompt(string[] lines)
     {
-        _promptType = type;
+        foreach (string line in lines)
+        {
+            if (line.Contains(_promptFileIndicator))
+            {
+                _promptType = line.Replace(_promptFileIndicator, "");
+            }
+            else
+            {
+                _promptList.Add(line);
+            }
+        }
     }
 
     public void AddPrompt(string prompt)

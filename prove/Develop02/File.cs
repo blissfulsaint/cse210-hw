@@ -2,13 +2,28 @@ using System.IO;
 
 public class File
 {
-    string _currentDir;
-    string _fileName;
+    string _currentDir = "";
+    string _fileName = "";
 
     public string[] LoadFile()
     {
-        string[] lines = System.IO.File.ReadAllLines(_fileName);
-        return lines;
+        try 
+        {
+            if (_fileName != "")
+            {
+                string[] lines = System.IO.File.ReadAllLines(_fileName);
+                return lines;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return null;
+        }
     }
 
     public void SaveFile(List<string> lines)
@@ -40,5 +55,15 @@ public class File
     public void DisplayFileName()
     {
         Console.WriteLine($"This is the current file name: {_fileName}");
+    }
+
+    public string GetFileName()
+    {
+        return _fileName;
+    }
+
+    public string GetDir()
+    {
+        return _currentDir;
     }
 }

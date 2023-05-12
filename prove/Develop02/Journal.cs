@@ -78,4 +78,9 @@ public class Journal
     {
         return _entries;
     }
+
+    public void ClearEntries()
+    {
+        _entries.Clear();
+    }
 }
