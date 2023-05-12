@@ -268,6 +268,7 @@ public class Menu
                     DisplayShowMenu();
                     break;
                 case "F":
+                    // Future: add in functionality to search by prompt type
                     Console.Write("Enter a keyword to search by: ");
                     response = Console.ReadLine();
                     _journal.SearchByKeyword(response);
