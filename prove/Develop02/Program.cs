@@ -19,3 +19,9 @@ menu.DisplayFileMenu();
 // explain it here. I know I was really extra and I 
 // probably didn't need to do all of this, but I had a
 // lot of fun with it so it was worth it.
+
+// As a final note, you may notice that there are some
+// methods, particularly in the journal class, that went
+// unused. I intend to continue building on this program
+// in the future, and those are entirely extra, but that
+// is why they are there. 
