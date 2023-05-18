@@ -1,1 +1,1 @@
-_stringSeparator: ?>
+_stringSeparator: <
