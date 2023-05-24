@@ -12,20 +12,40 @@ class Program
         {
             string[] parts = line.Split("?>");
 
-            string reference = parts[0];
-            string[parts.Count() - 1] verses;
-            
-            for (int i = 0; i < verses.Count(); i++)
+            string scriptureReference = parts[0];
+            string verses = parts[1];
+
+            string book;
+            int chapter;
+            int firstVerse;
+            int lastVerse;
+
+            string[] parts1 = scriptureReference.Split(">");
+            book = parts1[0];
+
+            string[] parts2 = parts1[1].Split(":");
+            chapter = int.Parse(parts2[0]);
+
+            if (parts2[1].Contains("-"))
             {
-                verses[i] = parts[i++];
-                string[] verseParts = verses[i].Split(" - ");
+                string[] parts3 = parts2[1].Split("-");
+
+                firstVerse = int.Parse(parts3[0]);
+                lastVerse = int.Parse(parts3[1]);
             }
+            else
+            {
+                firstVerse = int.Parse(parts2[1]);
+                lastVerse = int.Parse(parts2[1]);
+            }
+
+            Reference reference = new Reference(book, chapter, firstVerse, lastVerse);
+            Scripture scripture = new Scripture(verses, reference);
+
+            scriptures.Add(scripture);
         }
 
-        Reference reference = new Reference("1 Nephi", 3, 7);
-        string scriptureText = "And it came to pass that I, Nephi, said unto my father: I will go and do the things which the Lord hath commanded, for I know that the Lord giveth no commandments unto the children of men, save he shall prepare a way for them that they may accomplish the thing which he commandeth them.";
-        Scripture scripture = new Scripture(scriptureText, reference);
-
-        scripture.Display();
+        Random rand = new Random();
+        scriptures[rand.Next(0, scriptures.Count())].Display();
     }
 }

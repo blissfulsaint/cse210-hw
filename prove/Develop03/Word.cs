@@ -29,12 +29,16 @@ public class Word
 
     public void ShowWord()
     {
-        _isHidden = false;
+        _isHidden = IsSpecialChar();
     }
 
     public void Display()
     {
-        if (_isHidden == false)
+        if (_word.Contains("<"))
+        {
+            Console.Write($"\n{_word.Substring(1)}");
+        }
+        else if (_isHidden == false)
         {
             Console.Write(_word);
         }
@@ -47,5 +51,10 @@ public class Word
     public bool IsHidden()
     {
         return _isHidden;
+    }
+
+    public bool IsSpecialChar()
+    {
+        return (int.TryParse(_word, out int number) || _word == "-" || _word.Contains("<"));
     }
 }
