@@ -1,5 +1,7 @@
 using System;
 
+// As you can see in this program file, I added the ability to load scriptures from a txt file and pick a random one. As of right now, there are only two scriptures in the file, but if you were to add more under the same format, they will be a part of the program
+
 class Program
 {
     static void Main(string[] args)
