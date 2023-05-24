@@ -71,6 +71,10 @@ public class Scripture
             bool toHide = rand.Next(0, _chance) == 0;
             if (_hiddenWords == _words.Count() - 1 || word.IsHidden() == true || toHide)
             {
+                if (!word.IsHidden())
+                {
+                    _hiddenWords++;
+                }
                 word.HideWord();
             }
             else
@@ -83,7 +87,7 @@ public class Scripture
         {
             foreach (Word word in _words)
             {
-                if (word.IsHidden())
+                if (!word.IsHidden())
                 {
                     word.HideWord();
                     _hiddenWords++;
@@ -102,7 +106,7 @@ public class Scripture
 
         foreach (Word word in _words)
         {
-            if (word.IsHidden() == false)
+            if (!word.IsHidden())
             {
                 isHidden = false;
             }
