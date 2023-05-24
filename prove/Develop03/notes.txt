@@ -1,0 +1,1 @@
+Program does an interesting thing where if there is one word remaining when I press enter, the program softlocks and doesn't allow me to do anything unless I manually exit the program using ctrl+c

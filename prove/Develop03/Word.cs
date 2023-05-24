@@ -25,13 +25,11 @@ public class Word
     public void HideWord()
     {
         _isHidden = true;
-        Display();
     }
 
     public void ShowWord()
     {
         _isHidden = false;
-        Display();
     }
 
     public void Display()
