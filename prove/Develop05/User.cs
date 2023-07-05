@@ -3,6 +3,7 @@ public class User
     private string _name;
     private int _points;
     private List<Goal> _goals = new List<Goal>();
+    
 
     public User(string name)
     {
