@@ -1,12 +1,10 @@
 public class Goal
 {
+    protected string _goalType;
     protected string _goal;
     protected string _description;
     protected int _points;
     protected bool _isComplete;
-    // protected int _timesCompleted;
-    // protected int _completionGoal;
-    // protected int _bonusPoints;
 
     public virtual int Record()
     {
@@ -64,5 +62,10 @@ public class Goal
     public bool CompletionStatus()
     {
         return _isComplete;
+    }
+
+    public string GetType()
+    {
+        return _goalType;
     }
 }
