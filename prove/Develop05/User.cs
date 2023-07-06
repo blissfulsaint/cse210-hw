@@ -3,6 +3,7 @@ public class User
     private string _name;
     private int _points;
     private List<Goal> _goals = new List<Goal>();
+    private List<Goal> _filteredGoals = new List<Goal>();
     
 
     public User(string name)
@@ -42,5 +43,38 @@ public class User
 
             goalIndex++;
         }
+    }
+
+    public void DisplayFilteredGoals()
+    {
+        int goalIndex = 0;
+        foreach (Goal goal in _filteredGoals)
+        {
+            Console.Write($"{goalIndex}. ");
+            goal.Display();
+            Console.Write("\n");
+
+            goalIndex++;
+        }
+    }
+
+    public void SetFilteredGoals(List<Goal> filteredGoals)
+    {
+        _filteredGoals = filteredGoals;
+    }
+
+    public void AddGoal(Goal goal)
+    {
+        _goals.Add(goal);
+    }
+
+    public void RemoveGoal(int index)
+    {
+        _goals.Remove(_goals[index]);
+    }
+
+    public void RemoveAllGoals()
+    {
+        _goals.Clear();
     }
 }
