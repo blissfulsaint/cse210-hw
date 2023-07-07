@@ -5,7 +5,6 @@ public class User
     private List<Goal> _goals = new List<Goal>();
     private List<Goal> _filteredGoals = new List<Goal>();
     
-
     public User(string name)
     {
         _name = name;
