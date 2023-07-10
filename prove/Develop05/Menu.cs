@@ -93,11 +93,91 @@ public class Menu
 
     public void LoadUser()
     {
+        string[] lines = _file.LoadFile();
 
+        if (lines == null)
+        {
+            Console.WriteLine("No User file was found with that filename.");
+        }
+        else if (lines[0] == "--- User File ---")
+        {
+            List<Goal> newGoalsList = new List<Goal>();
+            string newUserName = "";
+            int newUserPoints = 0;
+
+            foreach (string line in lines)
+            {
+                if (line.Contains("!>name: "))
+                {
+                    newUserName = line.Replace("!>name: ", "");
+                }
+                else if (line.Contains("!>points: "))
+                {
+                    newUserPoints = int.Parse(line.Replace("!>points: ", ""));
+                }
+                else if (line != "--- User File ---")
+                {
+                    string[] parts = line.Split(_stringSeparator);
+                    string[] goalParts = parts[0].Split(":");
+
+                    string goal = goalParts[1];
+                    string description = parts[1];
+                    int points = int.Parse(parts[2]);
+                    bool isComplete = bool.Parse(parts[3]);
+
+                    if (goal == "SimpleGoal")
+                    {
+                        SimpleGoal newGoal = new SimpleGoal(goal, description, points, isComplete);
+                        newGoalsList.Add(newGoal);
+                    }
+                    else if (goal == "EternalGoal")
+                    {
+                        EternalGoal newGoal = new EternalGoal(goal, description, points, isComplete);
+                        newGoalsList.Add(newGoal);
+                    }
+                    else if (goal == "ChecklistGoal")
+                    {
+                        int completionGoal = int.Parse(parts[4]);
+                        int bonusPoints = int.Parse(parts[5]);
+                        int timesCompleted = int.Parse(parts[6]);
+
+                        ChecklistGoal newGoal = new ChecklistGoal(goal, description, points, completionGoal, bonusPoints, timesCompleted);
+                        newGoalsList.Add(newGoal);
+                    }
+                }
+
+                User newUser = new User(newUserName, newUserPoints, newGoalsList);
+                _user = newUser;
+            }
+        }
+        else 
+        {
+            Console.WriteLine("This does not appear to be a user file");
+        }
     }
 
     public void SaveUser()
     {
+        List<string> lines = new List<string>();
+        List<Goal> goals = _user.GetGoals();
 
+        lines.Add("--- User File ---");
+        lines.Add($"!>name: {_user.GetName()}");
+        lines.Add($"!>points: {_user.GetPoints()}");
+
+        foreach (Goal goal in goals)
+        {
+            if (goal.GetType() == "SimpleGoal" || goal.GetType() == "EternalGoal")
+            {
+                lines.Add($"{goal.GetType()}:{goal.GetGoal}{_stringSeparator}{goal.GetDescription}{_stringSeparator}{goal.GetPoints()}{_stringSeparator}{goal.GetCompletionStatus()}");
+            }
+            else if (goal.GetType() == "ChecklistGoal")
+            {
+                ChecklistGoal tempGoal = (ChecklistGoal)goal;
+                lines.Add($"{tempGoal.GetType()}:{tempGoal.GetGoal}{_stringSeparator}{tempGoal.GetDescription}{_stringSeparator}{tempGoal.GetPoints()}{_stringSeparator}{tempGoal.GetCompletionStatus()}{_stringSeparator}{tempGoal.GetCompletionGoal()}{_stringSeparator}{tempGoal.GetBonusPoints()}{_stringSeparator}{tempGoal.GetTimesCompleted()}");
+            }
+        }
+
+        _file.SaveFile(lines);
     }
 }

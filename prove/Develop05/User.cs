@@ -4,6 +4,12 @@ public class User
     private int _points;
     private List<Goal> _goals = new List<Goal>();
     private List<Goal> _filteredGoals = new List<Goal>();
+
+    public User()
+    {
+        _name = "";
+        _points = 0;
+    }
     
     public User(string name)
     {
@@ -75,5 +81,20 @@ public class User
     public void RemoveAllGoals()
     {
         _goals.Clear();
+    }
+
+    public string GetName()
+    {
+        return _name;
+    }
+
+    public int GetPoints()
+    {
+        return _points;
+    }
+
+    public List<Goal> GetGoals()
+    {
+        return _goals;
     }
 }

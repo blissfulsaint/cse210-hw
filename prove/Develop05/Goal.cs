@@ -59,7 +59,7 @@ public class Goal
         _isComplete = false;
     }
 
-    public bool CompletionStatus()
+    public bool GetCompletionStatus()
     {
         return _isComplete;
     }

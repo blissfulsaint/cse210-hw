@@ -1,0 +1,6 @@
+--- User File ---
+!>name: Brandon
+!>points: 0
+SimpleGoal:Do CSE210 HW?>Finish all of my hw from week 10 specifically?>200?>false
+EternalGoal:Read Scriptures?>Read at least 5 verses from the Book of Mormon?>50?>false
+ChecklistGoal:Work on VMC Website?>Work on the VMC website for one hour 5 different days?>100?>false?>5?>500?>0
