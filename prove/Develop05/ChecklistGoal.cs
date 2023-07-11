@@ -28,6 +28,18 @@ public class ChecklistGoal : Goal
         _timesCompleted = timesCompleted;
     }
 
+    public ChecklistGoal(string goal, string description, int points, int completionGoal, int bonusPoints, int timesCompleted, bool isComplete)
+    {
+        _goalType = "ChecklistGoal";
+        _goal = goal;
+        _description = description;
+        _points = points;
+        _isComplete = isComplete;
+        _completionGoal = completionGoal;
+        _bonusPoints = bonusPoints;
+        _timesCompleted = timesCompleted;
+    }
+
     public override int Record()
     {
         int reward = 0;
