@@ -10,12 +10,6 @@ public class User
         _name = "";
         _points = 0;
     }
-    
-    public User()
-    {
-        _name = "";
-        _points = 0;
-    }
     public User(string name)
     {
         _name = name;
