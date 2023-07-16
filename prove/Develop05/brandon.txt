@@ -1,0 +1,8 @@
+--- User File ---
+!>name: Brandon
+!>points: 1020
+SimpleGoal:Do CSE210 HW?>Finish all of my hw from week 10 specifically?>200?>True
+EternalGoal:Read Scriptures?>Read at least 5 verses from the Book of Mormon?>50?>False
+ChecklistGoal:Work on VMC Website?>Work on the VMC website for one hour 5 different days?>100?>False?>5?>500?>1
+SimpleGoal:Donate Plasma?>Go donate plasma today?>200?>True
+ChecklistGoal:Do Ministering Interviews?>Do ministering interviews with all of the quorum members?>30?>True?>3?>200?>4

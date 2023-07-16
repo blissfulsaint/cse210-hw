@@ -4,6 +4,12 @@ public class User
     private int _points;
     private List<Goal> _goals = new List<Goal>();
     private List<Goal> _filteredGoals = new List<Goal>();
+
+    public User()
+    {
+        _name = "";
+        _points = 0;
+    }
     
     public User()
     {
@@ -38,6 +44,7 @@ public class User
 
     public void DisplayGoals()
     {
+        Console.Write($"Name: {_name} \nPoints: {_points} \n");
         int goalIndex = 0;
         foreach (Goal goal in _goals)
         {
@@ -46,6 +53,10 @@ public class User
             Console.Write("\n");
 
             goalIndex++;
+        }
+        if (_goals.Count() == 0)
+        {
+            Console.WriteLine("There are no goals to display!");
         }
     }
 
@@ -80,5 +91,30 @@ public class User
     public void RemoveAllGoals()
     {
         _goals.Clear();
+    }
+
+    public void SetName(string name)
+    {
+        _name = name;
+    }
+
+    public string GetName()
+    {
+        return _name;
+    }
+
+    public int GetPoints()
+    {
+        return _points;
+    }
+
+    public List<Goal> GetGoals()
+    {
+        return _goals;
+    }
+
+    public void RecordGoal(int index)
+    {
+        _points += _goals[index].Record();
     }
 }
