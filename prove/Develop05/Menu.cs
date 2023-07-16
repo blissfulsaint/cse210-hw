@@ -93,7 +93,7 @@ public class Menu
 
     public void LoadUser()
     {
-
+        
     }
 
     public void SaveUser()
